@@ -1,0 +1,52 @@
+{
+  "name": "@momsfriendlydevco/formatters",
+  "version": "1.0.0",
+  "description": "Collection of string formatters",
+  "scripts": {
+    "lint": "eslint lib",
+    "test": "mocha"
+  },
+  "type": "module",
+  "imports": {
+    "#lib/*": "./lib/*.js"
+  },
+  "exports": {
+    ".": "./lib/formatters.js",
+    "./*": "./lib/*.js"
+  },
+  "main": "lib/formatters.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MomsFriendlyDevCo/formatters.git"
+  },
+  "author": "Matt Carter <matt@mfdc.biz>",
+  "bugs": {
+    "url": "https://github.com/MomsFriendlyDevCo/formatters/issues"
+  },
+  "homepage": "https://github.com/MomsFriendlyDevCo/formatters#readme",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=16.14.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "eslint": "^8.30.0",
+    "mocha": "^10.2.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es6": true,
+      "node": true,
+      "mocha": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 13,
+      "sourceType": "module"
+    }
+  },
+  "dependencies": {
+    "@momsfriendlydevco/readable": "^1.2.1",
+    "javascript-time-ago": "^2.5.9"
+  }
+}
