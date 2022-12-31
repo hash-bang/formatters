@@ -9,21 +9,21 @@ All formatters are usable as either sub-methods or individual stand-alone librar
 import formatters from '@momsfriendlydevco/formatters';
 
 formatters.bytes(1024); //= 1kb
-``
+```
 
 ```javascript
 // Import just the function
 import {bytes} from '@momsfriendlydevco/formatters';
 
 bytes(1024); //= 1kb
-``
+```
 
 ```javascript
 // Import function, but prefixed
 import {formatBytes} from '@momsfriendlydevco/formatters';
 
 formatBytes(1024); //= 1kb
-``
+```
 
 
 Formatters
