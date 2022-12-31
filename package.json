@@ -1,7 +1,7 @@
 {
   "name": "@momsfriendlydevco/formatters",
   "version": "1.0.0",
-  "description": "Collection of string formatters",
+  "description": "Collection of string formatters in ES6 format",
   "scripts": {
     "lint": "eslint lib",
     "test": "mocha"
