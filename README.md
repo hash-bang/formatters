@@ -33,6 +33,7 @@ As above all formatters are either camel cased from the main module, exported as
 bytes(value)
 ------------
 Return a short, human readable byte string.
+Also available as `formatBytes()`
 ```javascript
 import {bytes} from '@momsfriendlydevco/formatters';
 
@@ -43,6 +44,7 @@ bytes(1024); //= 1kb
 list(value) / listAnd(value) / listOr(value)
 --------------------------------------------
 Combine a list of strings into a readable list.
+Also available as `listAnd()`, `listOr()`, `formatList()`, `formatListAnd()`, `formatListOr()`
 
 ```javascript
 import {list, listOr} from '@momsfriendlydevco/formatters';
@@ -55,15 +57,55 @@ listOr(['Foo', 'Bar', 'Baz']); //= "Foo, Bar or Baz"
 number(value)
 -------------
 Return a formatted number.
+Also available as `formatNumber()`
 ```javascript
 import {number} from '@momsfriendlydevco/formatters';
 
-number(1024); //= 1K
+number(1024); //= 1,024
 ```
+
+plural(value)
+-------------
+Try to pluralize a word (if it is necessary).
+Also available as `formatPlural()`
+
+Note that this function can be called in numerous ways:
+```javascript
+// Pluralize a single word
+pluralize('item') //= "items"
+
+// Pluralize conditionally based on value
+pluralize(1, 'item') //= "item"
+pluralize(10, 'item') //= "items"
+pluralize(1, 'item', {prefix: true}) //= "1 item"
+pluralize(10, 'item', {prefix: true}) //= "10 items"
+
+// Specify pluralization rules (pipes)
+pluralize(1, 'item|items') //= "item"
+pluralize(3, 'item|items') //= "items"
+pluralize(1, 'item|items', {prefix: true}) //= "1 item"
+pluralize(10, 'item|items', {prefix: true}) //= "10 items"
+
+// Specify pluralization rules (braces)
+pluralize(1, 'item[s]') //= "item"
+pluralize(3, 'item[s]') //= "items"
+pluralize(1, 'pe[erson|ople]') //= "person"
+pluralize(3, 'pe[erson|ople]') //= "people"
+```
+
+Supported options are:
+
+| Option      | Type      | Default | Description                             |
+|-------------|-----------|---------|-----------------------------------------|
+| `.singular` | `String`  |         | The singular varient of the word        |
+| `.plural`   | `String`  |         | The plural varient of the word if known |
+| `.prefix`   | `Boolean` | `false` | Include the number as a prefix          |
+
 
 relativeTime(value)
 -------------------
 Return a short string indicating a relative time.
+Also available as `formatRelativeTime()`
 ```javascript
 import {relativeTime} from '@momsfriendlydevco/formatters';
 
@@ -71,6 +113,28 @@ number(Date.now() - 1000); //= 1s
 number(Date.now() + 1000 * 60); //= 1m
 number(Date.now() + 1000 * 60 * 60); //= 1h
 ```
+
+
+format(value)
+-------------
+Apply the above functions to a string or array of strings using square braces to denote markup.
+
+| Markup Type       | Examples                                             | Description |
+|-------------------|------------------------------------------------------|-------------|
+| Simple Plurals    | `[s]`, `[es]`, `[person|people]`                     | Apply a plural to the first number backwards from the marker |
+| Lists (AND style) | `[list]${items}[/list]`, `[list and]${items}[/list]` | Format a CSV of items into a `foo, bar and baz` style output |
+| Lists (OR style)  | `[list or]${items}[/list]`                           | Format a CSV of items into a `foo, bar or baz` style output |
+| Lists (w/cutoff)  | `[list cutoff=3]${items}[/list]`                     | Specify the maximum number of items before truncation |
+| Counts            | `[#]`                                                | Show the number of items in the list |
+| Transform: bytes  | `1024[bytes]`, `31239182 [bytes]`                    | Format the number to the left of the marker as bytes |
+| Transform: number | `1024[number]`, `31239182 [n]`                       | Format the number to the left of the marker as a readable number |
+| Transform: percentage | `12[percent]`, `8.3112[percentage]`, `13.332[%]` | Format the number to the left of the marker as a readable percentage with sign |
+
+
+**Notes:**
+
+* All `[list]...[/list]` markups expect a CSV (and will auto truncate spacing)
+* Usage of `[#]` is limited to one list per string, if you need more prove `format()` an array of strings which will be concatted.
 
 
 Utilities
