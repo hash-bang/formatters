@@ -25,6 +25,23 @@ describe('pluralize', ()=> {
 		expect(pluralize('pe[rson|ople]', {value: 2})).to.equal('people');
 	});
 
+	it('general plural rules', ()=> {
+		expect(pluralize('person')).to.deep.equal('people');
+		expect(pluralize('item')).to.deep.equal('items');
+
+		expect(pluralize('cactus')).to.deep.equal('cactuses');
+		expect(pluralize('soapbox')).to.deep.equal('soapboxes');
+		expect(pluralize('thesis')).to.deep.equal('thesises');
+		expect(pluralize('stereo')).to.deep.equal('stereos');
+		expect(pluralize('dwarf')).to.deep.equal('dwarves');
+		expect(pluralize('midwife')).to.deep.equal('midwives');
+		expect(pluralize('die')).to.deep.equal('dice');
+		expect(pluralize('fowl')).to.deep.equal('fowl');
+		expect(pluralize('google')).to.deep.equal('googles');
+		expect(pluralize('card')).to.deep.equal('cards');
+		expect(pluralize('money')).to.deep.equal('money');
+	});
+
 	it('within a sentence', ()=> {
 		expect(pluralize(1, 'bottle of beer[s]', {prefix: true})).to.equal('1 bottle of beer');
 	});
