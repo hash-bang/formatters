@@ -51,7 +51,18 @@ import {list, listOr} from '@momsfriendlydevco/formatters';
 
 list(['Foo', 'Bar', 'Baz']); //= "Foo, Bar and Baz"
 listOr(['Foo', 'Bar', 'Baz']); //= "Foo, Bar or Baz"
+
+list(['foo', 'bar', 'baz'], {cutoff: 2}); //= 'foo, bar and 1 other'
 ```
+
+Options are:
+
+| Option         | Type      | Default      | Description                                                                                            |
+|----------------|-----------|--------------|--------------------------------------------------------------------------------------------------------|
+| `and`          | `Boolean` | `false`      | Join items using a conjuction (i.e. 'and')                                                             |
+| `or`           | `Boolean` | `false`      | Join items using a disjunction (i.e. 'or')                                                             |
+| `cutoff`       | `Number`  | `0`          | Stop outputting items after this number and instead add `options.cutoffPlural` to the suffix           |
+| `cutoffPlural` | `String`  | `'other[s]'` | `pluralize()` compatible string to output if there are any more items after the `options.cutOff` value |
 
 
 number(value)

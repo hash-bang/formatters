@@ -18,4 +18,9 @@ describe('list', ()=> {
 		expect(listOr(['Foo', 'Bar', 'Baz'])).to.equal('Foo, Bar or Baz');
 	});
 
+	it('handle cutoff', ()=> {
+		expect(list(['foo', 'bar', 'baz'], {cutoff: 2})).to.equal('foo, bar and 1 other');
+		expect(listOr(['foo', 'bar', 'baz', 'quz', 'quuz'], {cutoff: 2})).to.equal('foo, bar or 3 others');
+	});
+
 });
