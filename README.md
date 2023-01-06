@@ -144,20 +144,21 @@ format(value)
 -------------
 Apply the above functions to a string or array of strings using square braces to denote markup.
 
-| Markup Type       | Examples                                             | Description |
-|-------------------|------------------------------------------------------|-------------|
-| Simple Plurals    | `[s]`, `[es]`, `[person|people]`                     | Apply a plural to the first number backwards from the marker |
-| Lists (AND style) | `[list]${items}[/list]`, `[list and]${items}[/list]` | Format a CSV of items into a `foo, bar and baz` style output |
-| Lists (OR style)  | `[list or]${items}[/list]`                           | Format a CSV of items into a `foo, bar or baz` style output |
-| Lists (w/cutoff)  | `[list cutoff=3]${items}[/list]`                     | Specify the maximum number of items before truncation |
-| Counts            | `[#]`                                                | Show the number of items in the list |
-| Transform: bytes  | `1024[bytes]`, `31239182 [bytes]`                    | Format the number to the left of the marker as bytes |
-| Transform: number | `1024[number]`, `31239182 [n]`                       | Format the number to the left of the marker as a readable number |
-| Transform: percentage | `12[percent]`, `8.3112[percentage]`, `13.332[%]` | Format the number to the left of the marker as a readable percentage with sign |
+| Markup Type           | Examples                                             | Description                                                                    |
+|-----------------------|------------------------------------------------------|--------------------------------------------------------------------------------|--------------------------------------------------------------|
+| Simple Plurals        | `[s]`, `[es]`, `[person                              | people]`                                                                       | Apply a plural to the first number backwards from the marker |
+| Lists (AND style)     | `[list]${items}[/list]`, `[list and]${items}[/list]` | Format a CSV of items into a `foo, bar and baz` style output                   |
+| Lists (OR style)      | `[list or]${items}[/list]`                           | Format a CSV of items into a `foo, bar or baz` style output                    |
+| Lists (w/cutoff)      | `[list cutoff=3]${items}[/list]`                     | Specify the maximum number of items before truncation                          |
+| Counts                | `[#]`                                                | Show the number of items in the list                                           |
+| Transform: bytes      | `1024[bytes]`, `31239182 [bytes]`                    | Format the number to the left of the marker as bytes                           |
+| Transform: number     | `1024[number]`, `31239182 [n]`                       | Format the number to the left of the marker as a readable number               |
+| Transform: percentage | `12[percent]`, `8.3112[percentage]`, `13.332[%]`     | Format the number to the left of the marker as a readable percentage with sign |
 
 
 **Notes:**
 
+* Any attribute within square brackets are passed onto that formatter e.g. `10[% dp=2]` actually calls `formatPercentage(10, {dp: 2})`
 * All `[list]...[/list]` markups expect a CSV (and will auto truncate spacing)
 * Usage of `[#]` is limited to one list per string, if you need more prove `format()` an array of strings which will be concatted.
 
