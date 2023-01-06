@@ -75,6 +75,20 @@ import {number} from '@momsfriendlydevco/formatters';
 number(1024); //= "1,024"
 ```
 
+percentage(value)
+-------------
+Return a formatted number.
+Also available as `formatPercentage()`
+```javascript
+import {number} from '@momsfriendlydevco/percentage';
+
+percentage(10.2382412314); //= "10.24%"
+```
+
+| Option  | Type      | Default | Description                                                                   |
+|---------|-----------|---------|-------------------------------------------------------------------------------|
+| `float` | `Boolean` | `false` | Treat the incomming value as a floating-point number (i.e. *100 before using) |
+
 plural(value)
 -------------
 Try to pluralize a word (if it is necessary).
@@ -106,11 +120,11 @@ pluralize(3, 'pe[erson|ople]') //= "people"
 
 Supported options are:
 
-| Option      | Type      | Default | Description                             |
-|-------------|-----------|---------|-----------------------------------------|
-| `.singular` | `String`  |         | The singular varient of the word        |
-| `.plural`   | `String`  |         | The plural varient of the word if known |
-| `.prefix`   | `Boolean` | `false` | Include the number as a prefix          |
+| Option     | Type      | Default | Description                             |
+|------------|-----------|---------|-----------------------------------------|
+| `singular` | `String`  |         | The singular varient of the word        |
+| `plural`   | `String`  |         | The plural varient of the word if known |
+| `prefix`   | `Boolean` | `false` | Include the number as a prefix          |
 
 
 relativeTime(value)
