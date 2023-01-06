@@ -8,21 +8,21 @@ All formatters are usable as either sub-methods or individual stand-alone librar
 // Import as global formatter object
 import formatters from '@momsfriendlydevco/formatters';
 
-formatters.bytes(1024); //= 1kb
+formatters.bytes(1024); //= "1kb"
 ```
 
 ```javascript
 // Import just the function
 import {bytes} from '@momsfriendlydevco/formatters';
 
-bytes(1024); //= 1kb
+bytes(1024); //= "1kb"
 ```
 
 ```javascript
 // Import function, but prefixed
 import {formatBytes} from '@momsfriendlydevco/formatters';
 
-formatBytes(1024); //= 1kb
+formatBytes(1024); //= "1kb"
 ```
 
 
@@ -37,7 +37,7 @@ Also available as `formatBytes()`
 ```javascript
 import {bytes} from '@momsfriendlydevco/formatters';
 
-bytes(1024); //= 1kb
+bytes(1024); //= "1kb"
 ```
 
 
@@ -52,7 +52,7 @@ import {list, listOr} from '@momsfriendlydevco/formatters';
 list(['Foo', 'Bar', 'Baz']); //= "Foo, Bar and Baz"
 listOr(['Foo', 'Bar', 'Baz']); //= "Foo, Bar or Baz"
 
-list(['foo', 'bar', 'baz'], {cutoff: 2}); //= 'foo, bar and 1 other'
+list(['foo', 'bar', 'baz'], {cutoff: 2}); //= "foo, bar and 1 other"
 ```
 
 Options are:
@@ -72,7 +72,7 @@ Also available as `formatNumber()`
 ```javascript
 import {number} from '@momsfriendlydevco/formatters';
 
-number(1024); //= 1,024
+number(1024); //= "1,024"
 ```
 
 plural(value)
