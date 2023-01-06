@@ -3,33 +3,34 @@ import format from '#lib/format';
 
 describe('formatter', ()=> {
 
-	it.skip('handle byte formatting', ()=> {
+	it('handle byte formatting', ()=> {
 		expect(format('10[bytes]')).to.equal('10b');
-		expect(format('1024[bytes]')).to.equal('10kb');
+		expect(format('1024[bytes]')).to.equal('1kb');
 
-		expect(format('prefix 10 [bytes] suffix')).to.equal('prefix 10b suffix');
-		expect(format('prefix 1024 [bytes] suffix')).to.equal('prefix 10kb suffix');
+		expect(format('prefix 10 [bytes] suffix')).to.equal('prefix 10b  suffix');
+		expect(format('prefix 1024 [bytes] suffix')).to.equal('prefix 1kb  suffix');
 	});
 
-	it.skip('handle number formatting', ()=> {
+	it('handle number formatting', ()=> {
 		expect(format('10[number]')).to.equal('10');
 		expect(format('1024[number]')).to.equal('1,024');
 		expect(format('10[n]')).to.equal('10');
 		expect(format('1024[n]')).to.equal('1,024');
-		expect(format('10 [n]')).to.equal('10');
-		expect(format('1024 [n]')).to.equal('1,024');
-		expect(format('prefix 1024 [n] suffix')).to.equal('prefix 1,024 suffix');
+		expect(format('10 [n]')).to.equal('10 ');
+		expect(format('1024 [n]')).to.equal('1,024 ');
+		expect(format('prefix 1024 [n] suffix')).to.equal('prefix 1,024  suffix');
 	});
 
-	it.skip('handle percentage formatting', ()=> {
+	it('handle percentage formatting', ()=> {
 		expect(format('10[percent]')).to.equal('10%');
-		expect(format('10.31827319872398172[percent]')).to.equal('10.32%');
+		expect(format('10.31827319872398172[percent]')).to.equal('10%');
+		expect(format('10.31827319872398172[percent dp=2]')).to.equal('10.32%');
 		expect(format('10[percentage]')).to.equal('10%');
-		expect(format('10.31827319872398172[percentage]')).to.equal('10.32%');
+		expect(format('10.31827319872398172[percentage]')).to.equal('10%');
 		expect(format('10[%]')).to.equal('10%');
-		expect(format('10.31827319872398172[%]')).to.equal('10.32%');
-		expect(format('prefix 10 [%] suffix')).to.equal('prefix 10% suffix');
-		expect(format('10.31827319872398172[%]')).to.equal('prefix 10.32% suffix');
+		expect(format('10.31827319872398172[% dp=2]')).to.equal('10.32%');
+		expect(format('prefix 10 [%] suffix')).to.equal('prefix 10%  suffix');
+		expect(format('prefix 10.31827319872398172 [%] suffix')).to.equal('prefix 10%  suffix');
 	});
 
 	it('handle prefix plurals', ()=> {
