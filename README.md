@@ -63,6 +63,7 @@ Options are:
 | `or`           | `Boolean` | `false`      | Join items using a disjunction (i.e. 'or')                                                             |
 | `cutoff`       | `Number`  | `0`          | Stop outputting items after this number and instead add `options.cutoffPlural` to the suffix           |
 | `cutoffPlural` | `String`  | `'other[s]'` | `pluralize()` compatible string to output if there are any more items after the `options.cutOff` value |
+| `quote`        | Boolean   | `false`      | Whether to surround entries with speachmarks. If a string this overrides the surrounding char(s)       |
 
 
 number(value)
@@ -158,7 +159,8 @@ Apply the above functions to a string or array of strings using square braces to
 
 **Notes:**
 
-* Any attribute within square brackets are passed onto that formatter e.g. `10[% dp=2]` actually calls `formatPercentage(10, {dp: 2})`
+* Any attribute within square brackets are passed onto that formatter - e.g. `10[% dp=2]` actually calls `formatPercentage(10, {dp: 2})`
+* Attributes specified without a value are assumed to specify `true` - e.g. `[list or quote]foo,bar,baz[/list]` -> `formatList(['foo', 'bar', 'baz'], {or: true, quote: true})`
 * All `[list]...[/list]` markups expect a CSV (and will auto truncate spacing)
 * Usage of `[#]` is limited to one list per string, if you need more prove `format()` an array of strings which will be concatted.
 

@@ -43,6 +43,7 @@ describe('formatter', ()=> {
 	it('handle lists', ()=> {
 		expect(format('[list]foo,bar,baz[/list]')).to.equal('foo, bar and baz');
 		expect(format('[list or]foo,bar,baz[/list]')).to.equal('foo, bar or baz');
+		expect(format('[list and quote]foo,bar,baz[/list]')).to.equal('"foo", "bar" and "baz"');
 		expect(format('prefix [list or]foo,bar,baz[/list] suffix')).to.equal('prefix foo, bar or baz suffix');
 		expect(format('prefix [list cutoff=3]foo,bar,baz,quz,quuz[/list] suffix')).to.equal('prefix foo, bar, baz and 2 others suffix');
 		expect(format('prefix [list or cutoff=3]foo,bar,baz,quz,quuz[/list] suffix')).to.equal('prefix foo, bar, baz or 2 others suffix');
