@@ -54,14 +54,20 @@ describe('formatter', ()=> {
 		expect(format('[list or]foo,bar,baz[/list] ([#])')).to.equal('foo, bar or baz (3)');
 	});
 
-	it.skip('handle list + plurals', ()=> {
-		expect(format('[list]foo[/list] item[s]')).to.equal('foo, bar and baz - 1 item');
-		expect(format('item[s] - [list]foo[/list]')).to.equal('1 item - foo, bar and baz');
-		expect(format('item[s] - [list or]foo[/list]')).to.equal('1 item - foo, bar or baz');
+	it('handle list + backward plurals', ()=> {
+		expect(format('[list]foo[/list] item[s]')).to.equal('foo item');
+		expect(format('[list]foo,bar,baz[/list] - [#] item[s]')).to.equal('foo, bar and baz - 3 items');
+	});
 
-		expect(format('[list]foo,bar,baz[/list] item[s]')).to.equal('foo, bar and baz - 3 items');
-		expect(format('item[s] - [list]foo,bar,baz[/list]')).to.equal('3 items - foo, bar and baz');
-		expect(format('item[s] - [list or]foo,bar,baz[/list]')).to.equal('3 items - foo, bar or baz');
+	it.skip('handle list + forward plurals', ()=> {
+		expect(format('item[s] - [list]foo[/list]')).to.equal('item - foo, bar and baz');
+		expect(format('item[s] - [list or]foo[/list]')).to.equal('item - foo, bar or baz');
+		expect(format('item[s] - [list]foo,bar,baz[/list]')).to.equal('items - foo, bar and baz');
+		expect(format('item[s] - [list or]foo,bar,baz[/list]')).to.equal('items - foo, bar or baz');
+		expect(format('[#] item[s] - [list]foo[/list]')).to.equal('1 item - foo, bar and baz');
+		expect(format('[#] item[s] - [list or]foo[/list]')).to.equal('3 items - foo, bar or baz');
+		expect(format('[#] item[s] - [list]foo,bar,baz[/list]')).to.equal('3 items - foo, bar and baz');
+		expect(format('[#] item[s] - [list or]foo,bar,baz[/list]')).to.equal('3 items - foo, bar or baz');
 	});
 
 	it('handle list + plurals + counts', ()=> {
