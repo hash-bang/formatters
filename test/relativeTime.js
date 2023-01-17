@@ -10,17 +10,22 @@ describe('relativeTime', ()=> {
 	});
 
 	it('handle negatives', ()=> {
-		expect(relativeTime(Date.now())).to.equal('0s');
 		expect(relativeTime(Date.now() - 1000)).to.equal('1s');
 		expect(relativeTime(Date.now() - 1000 * 60)).to.equal('1m');
 		expect(relativeTime(Date.now() - 1000 * 60 * 60)).to.equal('1h');
 	});
 
 	it('handle positives', ()=> {
-		expect(relativeTime(Date.now())).to.equal('0s');
 		expect(relativeTime(Date.now() + 1000)).to.equal('1s');
 		expect(relativeTime(Date.now() + 1000 * 60)).to.equal('1m');
 		expect(relativeTime(Date.now() + 1000 * 60 * 60)).to.equal('1h');
+	});
+
+	it('handle finite time', ()=> {
+		expect(relativeTime(Date.now())).to.equal('0s');
+		expect(relativeTime(Date.now() - 1)).to.equal('1ms');
+		expect(relativeTime(Date.now() - 100)).to.equal('100ms');
+		expect(relativeTime(Date.now() - 500)).to.equal('500ms');
 	});
 
 });

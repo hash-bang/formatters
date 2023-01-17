@@ -90,6 +90,7 @@ percentage(10.2382412314); //= "10.24%"
 |---------|-----------|---------|-------------------------------------------------------------------------------|
 | `float` | `Boolean` | `false` | Treat the incomming value as a floating-point number (i.e. *100 before using) |
 
+
 plural(value)
 -------------
 Try to pluralize a word (if it is necessary).
@@ -128,8 +129,8 @@ Supported options are:
 | `prefix`   | `Boolean` | `false` | Include the number as a prefix          |
 
 
-relativeTime(value)
--------------------
+relativeTime(value, options)
+----------------------------
 Return a short string indicating a relative time.
 Also available as `formatRelativeTime()`
 ```javascript
@@ -139,6 +140,12 @@ number(Date.now() - 1000); //= 1s
 number(Date.now() + 1000 * 60); //= 1m
 number(Date.now() + 1000 * 60 * 60); //= 1h
 ```
+
+Supported options are:
+
+| Option      | Type      | Default | Description                                                    |
+|-------------|-----------|---------|----------------------------------------------------------------|
+| `microTime` | `Boolean` | `true`  | Report time as milliseconds if distance to now is sub 1 second |
 
 
 format(value)
