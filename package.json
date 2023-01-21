@@ -7,6 +7,11 @@
     "test": "mocha"
   },
   "type": "module",
+  "keywords": [
+    "formatting",
+    "formatters",
+    "string"
+  ],
   "imports": {
     "#lib/*": "./lib/*.js"
   },
@@ -20,6 +25,7 @@
     "url": "git+https://github.com/MomsFriendlyDevCo/formatters.git"
   },
   "author": "Matt Carter <matt@mfdc.biz>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MomsFriendlyDevCo/formatters/issues"
   },
